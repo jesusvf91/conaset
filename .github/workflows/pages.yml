@@ -26,10 +26,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: preparacion/package-lock.json
 
       - name: Instalar y construir
-        working-directory: preparacion
         run: |
           npm ci
           npm run build
@@ -38,7 +36,7 @@ jobs:
       - name: Subir el sitio
         uses: actions/upload-pages-artifact@v3
         with:
-          path: preparacion/dist
+          path: dist
 
   deploy:
     needs: build
